@@ -1,0 +1,23 @@
+HasComments
+===========
+
+This is plug in for Ruby on Rails that aims to provide simple commenting on
+ActiveRecord models. At the time of writing this is very much a work in
+progress.
+
+
+Example
+=======
+
+You can apply this plugin in your models like this:
+
+  class Post < ActiveRecord::Base
+    has_comments
+  end
+
+Commenting on that post is now enabled.
+
+See the inline documentation for more information.
+
+
+Copyright (c) 2009 Arjan van der Gaag, released under the MIT license
