@@ -2,9 +2,9 @@ module AGW #:nodoc:
   module HasComments
     module InstanceMethods
 
-      # Let the post keep track of how many approved comments it has.
-      def increment_approved_comments_count!
-        update_attribute(:approved_comments_count, approved_comments_count + 1)
+      # Let the commentable keep track of the number of approved comments
+      def recalculate_approved_comments_count!
+        update_attribute(:approved_comments_count, comments.approved.count)
       end
 
       # Return if the current commentable object accepts comments.

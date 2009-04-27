@@ -12,8 +12,8 @@ class Comment < ActiveRecord::Base
   validates_presence_of :user_id, :unless => :public_user?
 
   validates_length_of :name, :within => 3..200, :allow_blank => true
-  validates_format_of :email, :with => AGW::HasComments::Utils.email, :allow_blank => true
-  validates_format_of :url, :with => AGW::HasComments::Utils.url, :allow_blank => true
+#  validates_format_of :email, :with => AGW::HasComments::Utils.email, :allow_blank => true
+#  validates_format_of :url, :with => AGW::HasComments::Utils.url, :allow_blank => true
 
   # Custom validations
   validate      :commentable_is_open
@@ -22,20 +22,14 @@ class Comment < ActiveRecord::Base
 
   # Callbacks
   before_create :auto_approve
-  after_create  :update_counter_cache
+  after_save  :update_counter_cache
 
   # Scopes
   default_scope :order => 'created_at DESC, approved_at DESC'
   named_scope   :approved, :conditions => 'approved_at IS NOT NULL'
   named_scope   :pending, :conditions => 'approved_at IS NULL'
 
-  attr_accessible :name, :email, :url, :body, :do_action
-
-  def do_action(); end
-
-  def do_action=(type)
-    logger.info("@@@ Type is now #{type.inspect}")
-  end
+  attr_accessible :name, :email, :url, :body, :approved
 
   # Immediately mark this comment as approved and save it to the database.
   def approve!
@@ -45,7 +39,22 @@ class Comment < ActiveRecord::Base
 
   # Mark this comment as approved.
   def approve
-    self.approved_at = Time.now
+    self.approved_at = Time.now if approved_at.nil?
+  end
+
+  def unapprove
+    self.approved_at = nil
+  end
+
+  def approved
+    !approved_at.nil?
+  end
+
+  def approved=(new_time)
+    case new_time
+    when '1': approve
+    when '0': unapprove
+    end
   end
 
   def approved?
@@ -103,7 +112,7 @@ private
   # Callback after_create. Make sure the counter cache is the commentable
   # object is updated, both the total count as the approved count.
   def update_counter_cache
-    commentable.increment_approved_comments_count! if approved_at_changed?
+    commentable.recalculate_approved_comments_count! if approved_at_changed?
   end
 
   # Custom validation. This checks to see if the commentable object is
