@@ -1,0 +1,75 @@
+# Logfile created on Mon Apr 27 21:21:03 +0200 2009 by /
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES('arjan', 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1001, 1, NULL, NULL, 'arjan@arjan.com', '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1001) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES('arjan', 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1007, 1, '2009-04-27 19:21:03', NULL, 'arjan@arjan.com', '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1007) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES('arjan', 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1008, 1, NULL, NULL, 'arjan@arjan.com', '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1008) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Exists (0.6ms)[0m   [0;1mSELECT "comments".id FROM "comments" WHERE ("comments"."user_id" = 1) ORDER BY created_at DESC, approved_at DESC LIMIT 1[0m
+  [4;35;1mComment Create (0.2ms)[0m   [0mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES(NULL, 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1010, 1, NULL, NULL, NULL, '2009-04-27 19:21:03')[0m
+  [4;36;1mPost Update (0.1ms)[0m   [0;1mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1010) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;35;1mComment Exists (0.5ms)[0m   [0mSELECT "comments".id FROM "comments" WHERE ("comments"."user_id" = 1) ORDER BY created_at DESC, approved_at DESC LIMIT 1[0m
+  [4;36;1mComment Create (0.1ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES('arjan', 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1010, 1, '2009-04-27 19:21:03', NULL, 'arjan@arjan.com', '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1010) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES(NULL, 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1011, 1, '2009-04-27 19:21:03', NULL, NULL, '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1011) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES(NULL, 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1012, 1, NULL, NULL, NULL, '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1012) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Exists (0.6ms)[0m   [0;1mSELECT "comments".id FROM "comments" WHERE ("comments"."name" = 'arjan' AND "comments"."email" = 'arjan@arjan.com') ORDER BY created_at DESC, approved_at DESC LIMIT 1[0m
+  [4;35;1mComment Create (0.2ms)[0m   [0mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES('arjan', 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1013, NULL, '2009-04-27 19:21:03', NULL, 'arjan@arjan.com', '2009-04-27 19:21:03')[0m
+  [4;36;1mPost Update (0.1ms)[0m   [0;1mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1013) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;35;1mComment Exists (0.5ms)[0m   [0mSELECT "comments".id FROM "comments" WHERE ("comments"."name" = 'arjan' AND "comments"."email" = 'arjan@arjan.com') ORDER BY created_at DESC, approved_at DESC LIMIT 1[0m
+  [4;36;1mComment Create (0.1ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES('arjan', 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1013, NULL, '2009-04-27 19:21:03', NULL, 'arjan@arjan.com', '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1013) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES('arjan', 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1014, NULL, '2009-04-27 19:21:03', NULL, 'arjan@arjan.com', '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1014) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES('arjan', 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1015, NULL, NULL, NULL, 'arjan@arjan.com', '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1015) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+Submitted SPAM to Akismet
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Create (0.5ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES('arjan', 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1024, 1, NULL, 'f', 'arjan@arjan.com', '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1024) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Create (1.2ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES('arjan', 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1025, 1, NULL, 't', 'arjan@arjan.com', '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1025) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+Submitted SPAM to Akismet
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+Submitted HAM to Akismet
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+Submitted SPAM to Akismet
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+Submitted SPAM to Akismet
+Submitted HAM to Akismet
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES('arjan', 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1029, 1, NULL, NULL, 'arjan@arjan.com', '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1029) [0m
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+WARNING: Can't mass-assign these protected attributes: commentable_type, commentable_id, user_id
+  [4;36;1mComment Create (0.6ms)[0m   [0;1mINSERT INTO "comments" ("name", "commentable_type", "updated_at", "body", "url", "commentable_id", "user_id", "approved_at", "spam", "email", "created_at") VALUES(NULL, 'Post', '2009-04-27 19:21:03', 'My body', 'http://arjan.com', 1030, 1, NULL, NULL, NULL, '2009-04-27 19:21:03')[0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "comments_count" = COALESCE("comments_count", 0) + 1 WHERE ("id" = 1030) [0m
+  [4;36;1mPost Create (0.4ms)[0m   [0;1mINSERT INTO "posts" ("updated_at", "title", "body", "approved_comments_count", "comments_count", "created_at") VALUES('2009-04-27 19:22:12', NULL, NULL, 5, 0, '2009-04-27 19:22:12')[0m

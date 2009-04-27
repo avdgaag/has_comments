@@ -2,13 +2,6 @@ module AGW #:nodoc:
   module HasComments
     module InstanceMethods
 
-      # Provide the basic details that make up an Akismet SPAM request.
-      # The comment will append its details to the resulting hash and submit
-      # that to Akismet.
-      def request
-        @request
-      end
-
       # Let the commentable keep track of the number of approved comments
       def recalculate_approved_comments_count!
         update_attribute(:approved_comments_count, comments.approved.count)
@@ -42,8 +35,8 @@ module AGW #:nodoc:
       def authorised_for_comments?(user_id)
         case options[:authorisation]
         when true, false: return options[:authorisation]
-        when Symbol:      return send(options[:authorisation])
-        when Proc:        return options[:authorisation].call
+        when Symbol:      return send(options[:authorisation], user_id)
+        when Proc:        return options[:authorisation].call(user_id)
         else
           return true
         end

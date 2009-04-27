@@ -35,7 +35,7 @@ module AGW #:nodoc:
         # See if this comment is considered SPAM.
         # This submits information about this comment to the Akismet server.
         def spam_according_to_akismet?
-          @spam_according_to_akismet = Akismetor.spam?(to_akismet) rescue nil
+          @spam_according_to_akismet = Akismetor.spam?(to_akismet)
         end
 
         # Submit this comment as SPAM.
@@ -51,10 +51,10 @@ module AGW #:nodoc:
         end
 
         def spam=(new_value)
-          if spam && (new_value == '0' || new_value == false)
+          if spam? && (new_value == '0' || new_value == false)
             write_attribute(:spam, false)
             mark_as_ham
-          elsif !spam && (new_value == '1' || new_value == true)
+          elsif !spam? && (new_value == '1' || new_value == true)
             write_attribute(:spam, true)
             mark_as_spam
           end
@@ -88,11 +88,6 @@ module AGW #:nodoc:
             :comment_author_url   => url,
             :comment_content      => body
           }.merge(Comment.request)
-
-          # No need to keep the request information around.
-          Comment.request = nil
-
-          @request
         rescue TypeError
           raise Exception, "Please provide Comment with a request object."
         end

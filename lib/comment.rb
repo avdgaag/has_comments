@@ -8,8 +8,8 @@ class Comment < ActiveRecord::Base
   # Validations
   validates_presence_of :body
 
-  validates_presence_of :name, :email, :unless => :registered_user?
-  validates_presence_of :user_id, :unless => :public_user?
+  validates_presence_of :name, :email, :unless => :from_registered_user?
+  validates_presence_of :user_id, :unless => :from_public_user?
 
   validates_length_of :name, :within => 3..200, :allow_blank => true
   validates_format_of :email, :with => AGW::HasComments::Utils.email, :allow_blank => true
@@ -68,9 +68,9 @@ class Comment < ActiveRecord::Base
   # Get the user that characterises this comment, that is: his ID or
   # combination of name, e-mail and URL.
   def user_attributes
-    if registered_user?
+    if from_registered_user?
       { :user_id => user_id }
-    elsif public_user?
+    elsif from_public_user?
       { :name => name, :email => email }
     end
   end
@@ -86,17 +86,17 @@ private
   # Helper for the validation, determining if the current user is registerd
   # or not. If he is, we should require a user_id. If he's not, we
   # should require a name and e-mail.
-  def registered_user?
+  def from_registered_user?
     !user_id.nil?
   end
 
-  def public_user?
+  def from_public_user?
     name && email
   end
 
   # Before_save callback. Check for SPAM before we save the record.
   def no_spam
-    self.spam = spam_according_to_akismet?
+    write_attribute(:spam, self.spam_according_to_akismet?) if from_public_user?
     true # don't stop the saving
   end
 
