@@ -2,6 +2,13 @@ module AGW #:nodoc:
   module HasComments
     module InstanceMethods
 
+      # Provide the basic details that make up an Akismet SPAM request.
+      # The comment will append its details to the resulting hash and submit
+      # that to Akismet.
+      def request
+        @request
+      end
+
       # Let the commentable keep track of the number of approved comments
       def recalculate_approved_comments_count!
         update_attribute(:approved_comments_count, comments.approved.count)

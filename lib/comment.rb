@@ -18,10 +18,10 @@ class Comment < ActiveRecord::Base
   # Custom validations
   validate      :commentable_is_open
   validate      :authorised_only
-  validate      :no_spam
 
   # Callbacks
   before_create :auto_approve
+  before_create :no_spam, :if => Proc.new { |c| c.commentable.options[:check_spam] }
   after_save    :update_counter_cache
 
   # Scopes
@@ -29,7 +29,9 @@ class Comment < ActiveRecord::Base
   named_scope   :approved, :conditions => 'approved_at IS NOT NULL'
   named_scope   :pending, :conditions => 'approved_at IS NULL'
 
-  attr_accessible :name, :email, :url, :body, :approved
+  attr_accessible :name, :email, :url, :body, :approved, :spam
+
+  include AGW::HasComments::Spam
 
   # Immediately mark this comment as approved and save it to the database.
   def approve!
@@ -63,12 +65,6 @@ class Comment < ActiveRecord::Base
   end
   alias_method :approved, :approved?
 
-  # See if this comment is considered SPAM.
-  # TODO: implement this method
-  def spam?
-    false
-  end
-
   # Get the user that characterises this comment, that is: his ID or
   # combination of name, e-mail and URL.
   def user_attributes
@@ -98,10 +94,10 @@ private
     name && email
   end
 
-  # Custom validation that makes sure no comment SPAM is accepted.
-  # This validates the record based on `spam?`.
+  # Before_save callback. Check for SPAM before we save the record.
   def no_spam
-    errors.add_to_base 'Your message looks like SPAM' if spam?
+    self.spam = spam_according_to_akismet?
+    true # don't stop the saving
   end
 
   # Before create callback, that will either approve, not approve or try
