@@ -22,7 +22,7 @@ class Comment < ActiveRecord::Base
 
   # Callbacks
   before_create :auto_approve
-  after_save  :update_counter_cache
+  after_save    :update_counter_cache
 
   # Scopes
   default_scope :order => 'created_at DESC, approved_at DESC'
@@ -42,14 +42,13 @@ class Comment < ActiveRecord::Base
     self.approved_at = Time.now if approved_at.nil?
   end
 
+  # Mark this comment as not approved
   def unapprove
     self.approved_at = nil
   end
 
-  def approved
-    !approved_at.nil?
-  end
-
+  # Helper for use in forms that approved or unapproves a comment based
+  # on a checkbox state.
   def approved=(new_time)
     case new_time
     when '1': approve
@@ -57,9 +56,12 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  # Return whether this comment is approved or not.
+  # This method is aliased as #approved so it can be used sensibly in forms.
   def approved?
     !approved_at.nil?
   end
+  alias_method :approved, :approved?
 
   # See if this comment is considered SPAM.
   # TODO: implement this method
