@@ -12,8 +12,8 @@ class Comment < ActiveRecord::Base
   validates_presence_of :user_id, :unless => :public_user?
 
   validates_length_of :name, :within => 3..200, :allow_blank => true
-#  validates_format_of :email, :with => AGW::HasComments::Utils.email, :allow_blank => true
-#  validates_format_of :url, :with => AGW::HasComments::Utils.url, :allow_blank => true
+  validates_format_of :email, :with => AGW::HasComments::Utils.email, :allow_blank => true
+  validates_format_of :url, :with => AGW::HasComments::Utils.url, :allow_blank => true
 
   # Custom validations
   validate      :commentable_is_open
