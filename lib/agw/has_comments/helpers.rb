@@ -31,7 +31,7 @@ module AGW
       #--
       # TODO: make this work with associated users
       def gravatar_for(comment, options = {})
-        email = comment.email or raise ArgumentError, 'Comment should have an e-mail.'
+        email = comment.email || raise ArgumentError, 'Comment should have an e-mail for gravatars to work.'
 
         image_tag gravatar_url(email, options), {
           :alt    => 'Gravatar',
