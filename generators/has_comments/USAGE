@@ -1,8 +1,9 @@
 Description:
-    Explain the generator
+    Generates a migration for te Comments table, and an Akismet config file.
 
 Example:
-    ./script/generate has_comments Thing
+    ./script/generate has_comments
 
     This will create:
-        what/will/it/create
+        db/migrate/xxxx_create_comments.rb
+        config/akismet.yml
